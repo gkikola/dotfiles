@@ -1,0 +1,28 @@
+# Gregory A. W. Kikola
+# .screenrc
+# 2014-10-16
+# Modified 2015-11-10
+
+startup_message off
+
+# enable alternate screen support
+# willl clear residualtext left over from closed editors, e.g.
+altscreen on
+
+# color terminal
+term screen-256color
+
+# set status bar
+hardstatus alwayslastline "%-w%{+b}%45L>%n* %t%{-}%+w%-17= %{+b}%Y-%m-%d %0c"
+
+# change escape character to ^T and use t for a literal ^T
+escape "^Tt"
+
+# use Emacs-style keys for marking
+markkeys "h=^B:l=^F:$=^E"
+
+# disable visual bell
+vbell off
+
+bind a title
+bind \^ resize +1
