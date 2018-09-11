@@ -1,11 +1,11 @@
 # Greg Kikola
 # i3 config file
 # 2018-09-09
+# Last modified 2018-09-10
 
 # i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Use super key
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -178,4 +178,5 @@ bindsym $mod+x mode "$mode_launcher"
 # finds out, if available)
 bar {
         status_command i3status
+        font pango:monospace 10
 }
