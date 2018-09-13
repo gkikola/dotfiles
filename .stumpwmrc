@@ -1,0 +1,10 @@
+;;; -*-lisp-*-
+;;;
+;;; Greg Kikola
+;;; .stumpwmrc
+;;; 2018-09-13
+
+(in-package :stumpwm)
+
+;; Message window font
+(set-font "-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-15")
