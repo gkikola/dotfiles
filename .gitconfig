@@ -1,0 +1,5 @@
+[user]
+	name = Greg Kikola
+	email = gkikola@gmail.com
+[core]
+	editor = emacs -nw
