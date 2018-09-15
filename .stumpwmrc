@@ -3,8 +3,43 @@
 ;;; Greg Kikola
 ;;; .stumpwmrc
 ;;; 2018-09-13
+;;; Last modified 2018-09-15
 
 (in-package :stumpwm)
 
 ;; Message window font
 (set-font "-xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso8859-15")
+
+
+;;; Program Launchers
+;;;
+;;; These are set up to use the Super key instead of the regular
+;;; prefix.
+
+;; Emacs (in addition to prefix e)
+(define-key *top-map* (kbd "s-e") "emacs")
+
+;; Firefox
+(defcommand firefox () ()
+  "Start Firefox or switch to it, if it is already running."
+  (run-or-raise "firefox" '(:class "Firefox")))
+(define-key *top-map* (kbd "s-f") "firefox")
+
+;; urxvt (also on prefix c, but prefix c always opens a new instance)
+(defcommand urxvt () ()
+  "Start urxvt or switch to it, if it is already running."
+  (run-or-raise "urxvt" '(:class "URxvt")))
+(define-key *top-map* (kbd "s-c") "urxvt")
+
+;; KeePassX
+(defcommand keepassx () ()
+  "Start KeepassX or switch to it, if it is already running."
+  (run-or-raise "keepassx" '(:class "Keepassx")))
+(define-key *top-map* (kbd "s-k") "keepassx")
+
+
+;;; Groups
+
+;; prefix g f should create or switch to a floating group for floating
+;; windows
+(define-key *groups-map* (kbd "f") "gnew-float Floating")
