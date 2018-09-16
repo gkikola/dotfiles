@@ -49,7 +49,7 @@
 
 ! Fonts
 URxvt*font:     xft:Monospace:pixelsize=14
-URxvt*boldFont: xft:Monospace-Bold:pixelsize=14
+URxvt*boldFont: xft:Monospace:pixelsize=14:style=Bold
 
 ! Scrollbar
 URxvt*scrollBar: false
