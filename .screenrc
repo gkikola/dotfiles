@@ -1,7 +1,7 @@
 # Gregory A. W. Kikola
 # .screenrc
 # 2014-10-16
-# Modified 2015-11-10
+# Modified 2018-09-16
 
 startup_message off
 
@@ -15,8 +15,8 @@ term screen-256color
 # set status bar
 hardstatus alwayslastline "%-w%{+b}%45L>%n* %t%{-}%+w%-17= %{+b}%Y-%m-%d %0c"
 
-# change escape character to ^T and use t for a literal ^T
-escape "^Tt"
+# change escape character to ^O and use o for a literal ^O
+escape "^Oo"
 
 # use Emacs-style keys for marking
 markkeys "h=^B:l=^F:$=^E"
