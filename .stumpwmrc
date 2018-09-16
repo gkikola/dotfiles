@@ -43,3 +43,9 @@
 ;; prefix g f should create or switch to a floating group for floating
 ;; windows
 (define-key *groups-map* (kbd "f") "gnew-float Floating")
+
+
+;;; Mouse
+
+;; Clicking on a window gives it focus
+(setf *mouse-focus-policy* :click)
