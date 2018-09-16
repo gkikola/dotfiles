@@ -49,3 +49,26 @@
   "Start KeepassX or switch to it, if it is already running."
   (run-or-raise "keepassx" '(:class "Keepassx")))
 (define-key *top-map* (kbd "s-k") "keepassx")
+
+
+;;; Mode Line
+;;;
+;;; Some changes won't take effect until mode line is reactivated.
+
+;; Set date and time format
+(setf *time-modeline-string* "%Y-%m-%d %a %H:%M:%S")
+
+;; Mode line format: Just date and time for now
+(setf *screen-mode-line-format* "%d")
+
+;; Set update frequency
+(setf *mode-line-timeout* 1)
+
+;; Set colors
+(setf *mode-line-foreground-color* "white")
+(setf *mode-line-border-color* "white")
+(setf *mode-line-background-color* "black")
+
+;; Turn on the mode line if it isn't already
+(if (not (head-mode-line (current-head)))
+    (toggle-mode-line (current-screen) (current-head)))
