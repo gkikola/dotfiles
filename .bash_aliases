@@ -1,4 +1,4 @@
-# Greg Kikola
+# Greg Kikola (-*- Sh -*-)
 # ~/.bash_aliases
 # 2018-09-19
 

@@ -1,9 +1,7 @@
-;;; -*-lisp-*-
-;;;
-;;; Greg Kikola
-;;; .stumpwmrc
+;;; Greg Kikola (-*-lisp-*-)
+;;; ~/.stumpwmrc
 ;;; 2018-09-13
-;;; Last modified 2018-09-15
+;;; Updated 2018-09-19
 
 (in-package :stumpwm)
 
