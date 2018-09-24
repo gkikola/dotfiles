@@ -48,8 +48,8 @@
   (run-or-raise "keepassx" '(:class "Keepassx")))
 (define-key *top-map* (kbd "s-k") "keepassx")
 
-;; physlock (to lock the screen)
-(define-key *top-map* (kbd "s-l") "exec physlock")
+;; i3lock (to lock the screen)
+(define-key *top-map* (kbd "s-l") "exec i3lock -c 000000")
 
 
 ;;; Mode Line
