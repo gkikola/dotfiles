@@ -56,11 +56,16 @@
 ;;;
 ;;; Some changes won't take effect until mode line is reactivated.
 
+;; Load modules
+(load-module "battery-portable")
+(load-module "cpu")
+(load-module "net")
+
 ;; Set date and time format
 (setf *time-modeline-string* "%Y-%m-%d %a %H:%M:%S")
 
 ;; Mode line format: Just date and time for now
-(setf *screen-mode-line-format* "%d")
+(setf *screen-mode-line-format* "%d - Battery: %B - %c (%t) - %l")
 
 ;; Set update frequency
 (setf *mode-line-timeout* 1)
