@@ -22,9 +22,12 @@
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 
-;; whitespace
+;; tabs
 (setq-default indent-tabs-mode nil) ; convert tabs to spaces
-(setq-default show-trailing-whitespace t) ; highlight trailing whitespace
+(setq-default tab-width 2)
+
+;; highlight trailing whitespace
+(setq-default show-trailing-whitespace t)
 ;; but ignore whitespace in calendar
 (add-hook 'calendar-initial-window-hook
           (lambda () (setq-local show-trailing-whitespace nil)))
@@ -56,3 +59,8 @@
 
 ;; php-mode
 (require 'php-mode nil 'noerror)
+(add-hook 'php-mode-hook #'(lambda() (setq c-basic-offset 2)))
+(add-hook 'php-mode-hook #'(lambda() (setq show-trailing-whitespace t)))
+
+;; web-mode
+(require 'web-mode nil 'noerror)
