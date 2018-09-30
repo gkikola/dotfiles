@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2018-09-19
+;;; Updated 2018-09-29
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -56,6 +56,9 @@
 (setq org-agenda-start-on-weekday nil)
 (setq org-clock-idle-time 10) ; resolve idle time while on the clock
 (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED")))
+
+;; css-mode
+(setq-default css-indent-offset 2)
 
 ;; php-mode
 (require 'php-mode nil 'noerror)
