@@ -62,7 +62,7 @@
 (load-module "net")
 
 ;; Set date and time format
-(setf *time-modeline-string* "%Y-%m-%d %a %H:%M:%S")
+(setf *time-modeline-string* "%Y-%m-%e %a %H:%M:%S")
 
 ;; Mode line format: Just date and time for now
 (setf *screen-mode-line-format* "%d - Battery: %B - %c (%t) - %l")
