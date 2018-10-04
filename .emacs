@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2018-09-29
+;;; Updated 2018-10-03
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -18,6 +18,9 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+;; show column numbers
+(setq column-number-mode t)
+
 ;; use M-p and M-n to scroll one line at a time
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
@@ -25,6 +28,9 @@
 ;; tabs
 (setq-default indent-tabs-mode nil) ; convert tabs to spaces
 (setq-default tab-width 2)
+
+;; treat C-<tab> like <tab>
+(global-set-key (kbd "C-<tab>") 'indent-for-tab-command)
 
 ;; highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
