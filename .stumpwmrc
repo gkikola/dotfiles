@@ -1,7 +1,7 @@
 ;;; Greg Kikola (-*-lisp-*-)
 ;;; ~/.stumpwmrc
 ;;; 2018-09-13
-;;; Updated 2018-09-19
+;;; Updated 2018-10-05
 
 (in-package :stumpwm)
 
@@ -20,6 +20,12 @@
 ;; prefix g f should create or switch to a floating group for floating
 ;; windows
 (define-key *groups-map* (kbd "f") "gnew-float Floating")
+
+
+;;; Screenshots
+(load-module "screenshot")
+(define-key *top-map* (kbd "Print") "screenshot")
+(define-key *top-map* (kbd "M-Print") "screenshot-window")
 
 
 ;;; Program Launchers
