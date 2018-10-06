@@ -1,7 +1,7 @@
 # Greg Kikola (-*- Sh -*-)
 # ~/.bash_aliases
 # 2018-09-19
-# Updated 2018-09-29
+# Updated 2018-10-05
 
 # directories
 alias dl='cd ~/Downloads/'
@@ -19,5 +19,4 @@ alias untargz='tar xvzf'
 alias untarbz2='tar xvjf'
 
 # other handy arguments
-alias mkdir='mkdir -pv'
 alias wget='wget -c'
