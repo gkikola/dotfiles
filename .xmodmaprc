@@ -1,0 +1,7 @@
+! Greg Kikola
+! ~/.xmodmaprc
+! 2018-10-09
+
+! Turn caps lock into a control key
+remove lock = Caps_Lock
+add control = Caps_Lock
