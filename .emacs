@@ -66,6 +66,9 @@
 ;; css-mode
 (setq-default css-indent-offset 2)
 
+;; js-mode
+(setq-default js-indent-level 2)
+
 ;; php-mode
 (require 'php-mode nil 'noerror)
 (add-hook 'php-mode-hook #'(lambda() (setq c-basic-offset 2)))
