@@ -74,5 +74,9 @@
 (add-hook 'php-mode-hook #'(lambda() (setq c-basic-offset 2)))
 (add-hook 'php-mode-hook #'(lambda() (setq show-trailing-whitespace t)))
 
+;; sh-mode
+(setq-default sh-basic-offset 2)
+(setq-default sh-indentation 2)
+
 ;; web-mode
 (require 'web-mode nil 'noerror)
