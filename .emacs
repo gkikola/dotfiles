@@ -68,6 +68,14 @@
 (setq org-clock-idle-time 10) ; resolve idle time while on the clock
 (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED")))
 
+;; rtags
+(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
+
+;; company
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; projectile
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
