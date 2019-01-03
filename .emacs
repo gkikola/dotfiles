@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2019-01-01
+;;; Updated 2019-01-02
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -67,6 +67,11 @@
 (setq org-agenda-start-on-weekday nil)
 (setq org-clock-idle-time 10) ; resolve idle time while on the clock
 (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED")))
+
+;; projectile
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(setq projectile-project-compilation-cmd "cmake --build build")
 
 ;; css-mode
 (setq-default css-indent-offset 2)
