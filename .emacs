@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2019-01-02
+;;; Updated 2019-01-30
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -20,11 +20,6 @@
 
 ;; show column numbers
 (setq column-number-mode t)
-
-;; set default frame size and split the window
-(when window-system
-  (set-frame-size (selected-frame) 162 50)
-  (split-window-right))
 
 ;; use M-p and M-n to scroll one line at a time
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
