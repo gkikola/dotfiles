@@ -1,0 +1,7 @@
+;;; Greg Kikola
+;;; ~/.guile
+;;; 2019-04-07
+
+;; use the GNU Readline library
+(use-modules (ice-9 readline))
+(activate-readline)
