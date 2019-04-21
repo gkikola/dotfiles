@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2019-01-30
+;;; Updated 2019-04-21
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -69,12 +69,12 @@
 (add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
 
 ;; company
-(add-hook 'after-init-hook 'global-company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; projectile
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(setq projectile-project-compilation-cmd "cmake --build build")
+;; (projectile-mode +1)
+;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;; (setq projectile-project-compilation-cmd "cmake --build build")
 
 ;; css-mode
 (setq-default css-indent-offset 2)
