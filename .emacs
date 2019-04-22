@@ -93,3 +93,7 @@
 
 ;; web-mode
 (require 'web-mode nil 'noerror)
+
+;; AUCTeX
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
