@@ -100,18 +100,3 @@
 ;; AUCTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
-
-;; Enable electric math mode and prevent regular electric mode from
-;; interfering
-(defun enable-electric-math ()
-  (set (make-variable-buffer-local
-        'TeX-electric-math)
-       (cons "$" "$"))
-  (set (make-variable-buffer-local
-        'LaTeX-electric-left-right-brace)
-       t)
-  (set (make-variable-buffer-local
-        'electric-pair-mode)
-       nil))
-(add-hook 'plain-TeX-mode-hook 'enable-electric-math)
-(add-hook 'LaTeX-mode-hook 'enable-electric-math)
