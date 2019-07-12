@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2019-04-21
+;;; Updated 2019-07-12
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -24,6 +24,9 @@
 ;; use M-p and M-n to scroll one line at a time
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
+
+;; automatically insert matching bracket symbols
+(electric-pair-mode 1)
 
 ;; tabs
 (setq-default indent-tabs-mode nil) ; convert tabs to spaces
@@ -97,3 +100,18 @@
 ;; AUCTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
+
+;; Enable electric math mode and prevent regular electric mode from
+;; interfering
+(defun enable-electric-math ()
+  (set (make-variable-buffer-local
+        'TeX-electric-math)
+       (cons "$" "$"))
+  (set (make-variable-buffer-local
+        'LaTeX-electric-left-right-brace)
+       t)
+  (set (make-variable-buffer-local
+        'electric-pair-mode)
+       nil))
+(add-hook 'plain-TeX-mode-hook 'enable-electric-math)
+(add-hook 'LaTeX-mode-hook 'enable-electric-math)
