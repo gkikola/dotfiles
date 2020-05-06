@@ -20,6 +20,6 @@ alias untarbz2='tar xvjf'
 alias wget='wget -c'
 
 # working with the X clipboard
-if which xclip; then
+if type xclip >/dev/null 2>&1; then
   alias xclip='xclip -selection clipboard'
 fi
