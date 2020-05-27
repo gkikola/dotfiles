@@ -1,6 +1,7 @@
 # Greg Kikola
 # ~/.bash_profile
-# 2018-10-28
+# Created 2018-10-28
+# Updated 2020-05-27
 
 # include .bashrc if it exists
 if [ -f "$HOME/.bashrc" ]; then
@@ -11,3 +12,5 @@ fi
 if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
+
+export PATH
