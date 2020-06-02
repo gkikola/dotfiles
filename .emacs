@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2019-07-12
+;;; Updated 2020-06-02
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -67,9 +67,9 @@
 (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED")))
 
 ;; rtags
-(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-(add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
+;; (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+;; (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+;; (add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
 
 ;; company
 ;; (add-hook 'after-init-hook 'global-company-mode)
