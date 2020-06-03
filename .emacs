@@ -7,6 +7,11 @@
 ;; installed packages.  Don't delete this line.
 (package-initialize)
 
+;; default frame size
+(when window-system
+  (set-frame-position (selected-frame) 960 72)
+  (set-frame-size (selected-frame) 100 50))
+
 ;; date and time
 (setq display-time-24hr-format t)
 (setq calendar-date-style 'iso)
@@ -25,8 +30,11 @@
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 
-;; automatically insert matching bracket symbols
+;; automatically insert matching bracket symbols, except for quotes
 (electric-pair-mode 1)
+(setq electric-pair-inhibit-predicate
+      (lambda (c)
+        (if (char-equal c ?\") t (electric-pair-default-inhibit c))))
 
 ;; tabs
 (setq-default indent-tabs-mode nil) ; convert tabs to spaces
