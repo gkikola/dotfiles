@@ -1,16 +1,41 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2020-06-02
+;;; Updated 2020-06-04
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
 (package-initialize)
 
-;; default frame size
-(when window-system
-  (set-frame-position (selected-frame) 960 72)
-  (set-frame-size (selected-frame) 100 50))
+;; define function to set desired frame-size
+(defun make-frame-single-wide ()
+  (interactive)
+  (delete-other-windows)
+  (when window-system
+    (set-frame-size (selected-frame) 100 50)
+    (set-frame-position (selected-frame) 960 72)))
+
+;; define function to set split double-wide display
+(defun make-frame-double-wide ()
+  (interactive)
+  (when window-system
+    (set-frame-size (selected-frame) 202 50)
+    (set-frame-position (selected-frame) 72 72))
+  (split-window-horizontally))
+
+;; define function to toggle between single-wide and split double-wide
+;; frame
+(defun toggle-frame-double-wide ()
+  (interactive)
+  (if (>= (count-windows) 2)
+      (make-frame-single-wide)
+    (make-frame-double-wide)))
+
+;; set initial frame size
+(make-frame-single-wide)
+
+;; set C-| to toggle between single- and double-wide frame
+(global-set-key (kbd "C-|") 'toggle-frame-double-wide)
 
 ;; date and time
 (setq display-time-24hr-format t)
@@ -30,11 +55,11 @@
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 
-;; automatically insert matching bracket symbols, except for quotes
+;; automatically insert matching bracket symbols, but do so
+;; conservatively
 (electric-pair-mode 1)
-(setq electric-pair-inhibit-predicate
-      (lambda (c)
-        (if (char-equal c ?\") t (electric-pair-default-inhibit c))))
+(setq-default electric-pair-inhibit-predicate
+              'electric-pair-conservative-inhibit)
 
 ;; tabs
 (setq-default indent-tabs-mode nil) ; convert tabs to spaces
