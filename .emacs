@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; 2014-09-13
-;;; Updated 2020-06-04
+;;; Updated 2020-06-07
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -111,6 +111,12 @@
 ;; (projectile-mode +1)
 ;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 ;; (setq projectile-project-compilation-cmd "cmake --build build")
+
+;; cc mode
+(defun set-custom-c-style ()
+  (c-set-style "stroustrup")
+  (setq c-basic-offset 2))
+(add-hook 'c-mode-common-hook 'set-custom-c-style)
 
 ;; css-mode
 (setq-default css-indent-offset 2)
