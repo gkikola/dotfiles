@@ -1,41 +1,11 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
-;;; 2014-09-13
-;;; Updated 2020-06-07
+;;; Created 2014-09-13
+;;; Updated 2021-06-05
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
 (package-initialize)
-
-;; define function to set desired frame-size
-(defun make-frame-single-wide ()
-  (interactive)
-  (delete-other-windows)
-  (when window-system
-    (set-frame-size (selected-frame) 100 50)
-    (set-frame-position (selected-frame) 960 72)))
-
-;; define function to set split double-wide display
-(defun make-frame-double-wide ()
-  (interactive)
-  (when window-system
-    (set-frame-size (selected-frame) 202 50)
-    (set-frame-position (selected-frame) 72 72))
-  (split-window-horizontally))
-
-;; define function to toggle between single-wide and split double-wide
-;; frame
-(defun toggle-frame-double-wide ()
-  (interactive)
-  (if (>= (count-windows) 2)
-      (make-frame-single-wide)
-    (make-frame-double-wide)))
-
-;; set initial frame size
-(make-frame-single-wide)
-
-;; set C-| to toggle between single- and double-wide frame
-(global-set-key (kbd "C-|") 'toggle-frame-double-wide)
 
 ;; date and time
 (setq display-time-24hr-format t)
@@ -45,8 +15,11 @@
 ;; hide menus and splash screen
 (setq inhibit-splash-screen t)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
 (tool-bar-mode -1)
+
+;; set frame size
+(when window-system
+  (set-frame-size (selected-frame) 100 50))
 
 ;; show column numbers
 (setq column-number-mode t)
@@ -54,12 +27,6 @@
 ;; use M-p and M-n to scroll one line at a time
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
-
-;; automatically insert matching bracket symbols, but do so
-;; conservatively
-(electric-pair-mode 1)
-(setq-default electric-pair-inhibit-predicate
-              'electric-pair-conservative-inhibit)
 
 ;; tabs
 (setq-default indent-tabs-mode nil) ; convert tabs to spaces
@@ -99,19 +66,6 @@
 (setq org-clock-idle-time 10) ; resolve idle time while on the clock
 (setq org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELED")))
 
-;; rtags
-;; (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-;; (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-;; (add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
-
-;; company
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-;; projectile
-;; (projectile-mode +1)
-;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-;; (setq projectile-project-compilation-cmd "cmake --build build")
-
 ;; cc mode
 (defun set-custom-c-style ()
   (c-set-style "stroustrup")
@@ -139,3 +93,15 @@
 ;; AUCTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (auctex))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
