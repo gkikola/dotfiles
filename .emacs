@@ -7,6 +7,14 @@
 ;; installed packages.  Don't delete this line.
 (package-initialize)
 
+;; set color theme
+(load-theme 'wombat)
+
+;; show fill column indicator
+(setq-default fill-column 80)
+(global-display-fill-column-indicator-mode)
+(set-face-attribute 'fill-column-indicator nil :foreground "grey25")
+
 ;; date and time
 (setq display-time-24hr-format t)
 (setq calendar-date-style 'iso)
@@ -93,15 +101,3 @@
 ;; AUCTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (auctex))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
