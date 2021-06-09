@@ -1,7 +1,7 @@
 ;;; Greg Kikola
 ;;; ~/.emacs
 ;;; Created 2014-09-13
-;;; Updated 2021-06-05
+;;; Updated 2021-06-08
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
@@ -11,7 +11,7 @@
 (load-theme 'wombat)
 
 ;; show fill column indicator
-(setq-default fill-column 80)
+(setq-default fill-column 78)
 (global-display-fill-column-indicator-mode)
 (set-face-attribute 'fill-column-indicator nil :foreground "grey25")
 
