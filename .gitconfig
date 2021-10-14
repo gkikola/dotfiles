@@ -1,12 +1,12 @@
 # Greg Kikola
 # ~/.gitconfig
 # Created 2018-09-09
-# Updated 2021-06-05
+# Updated 2021-10-13
 
 [user]
 	name = Greg Kikola
 	email = gkikola@gmail.com
 [core]
-	editor = emacs -nw
+	editor = vim
 [init]
 	defaultBranch = main
