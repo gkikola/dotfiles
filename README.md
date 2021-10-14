@@ -2,8 +2,7 @@ Greg Kikola's dotfiles
 ======================
 
 This is just a collection of my configuration files that I use on my
-systems, which run Debian GNU/Linux. Right now there isn't much
-to see, but I hope to add more over time.
+systems, which run Ubuntu or Debian GNU/Linux.
 
 Unless otherwise stated within the file, the contents of each of these
 files is licensed under the [Apache License
