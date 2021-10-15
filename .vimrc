@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2021-10-13
+" Updated 2021-10-15
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -38,6 +38,8 @@ set laststatus=2        " always show window statusline
 set nowrap              " disable text-wrapping
 set wildmenu            " display completion matches in a status line
 set incsearch           " enable incremental search
+
+set hidden              " hide abandoned buffers
 
 set ttimeout            " time out for key codes
 set ttimeoutlen=100     " wait up to 100ms for key code to be completed
