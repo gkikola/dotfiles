@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2021-10-15
+" Updated 2021-10-19
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -31,18 +31,18 @@ set backspace=indent,eol,start
 " Use jk instead of <ESC> to exit insert mode.
 inoremap jk <ESC>
 
-set history=200         " keep 200 lines of command line history
-set ruler               " show the cursor position all the time
-set showcmd             " display incomplete commands
-set laststatus=2        " always show window statusline
-set nowrap              " disable text-wrapping
-set wildmenu            " display completion matches in a status line
-set incsearch           " enable incremental search
+set history=200         " Keep 200 lines of command line history
+set ruler               " Show the cursor position all the time
+set showcmd             " Display incomplete commands
+set laststatus=2        " Always show window statusline
+set nowrap              " Disable text-wrapping
+set wildmenu            " Display completion matches in a status line
+set incsearch           " Enable incremental search
 
-set hidden              " hide abandoned buffers
+set hidden              " Hide abandoned buffers
 
-set ttimeout            " time out for key codes
-set ttimeoutlen=100     " wait up to 100ms for key code to be completed
+set ttimeout            " Time out for key codes
+set ttimeoutlen=100     " Wait up to 100ms for key code to be completed
 
 set expandtab           " Indent with spaces instead of tab characters
 set shiftwidth=2        " Set indent level for autoindent
