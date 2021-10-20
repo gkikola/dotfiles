@@ -47,6 +47,11 @@ set ttimeoutlen=100     " Wait up to 100ms for key code to be completed
 set expandtab           " Indent with spaces instead of tab characters
 set shiftwidth=2        " Set indent level for autoindent
 set softtabstop=2       " Set tab stop
+set textwidth=78        " Set length of formatted lines
+
+" Disable automatic line wrapping
+autocmd BufNewFile,BufRead * setlocal formatoptions-=t
+autocmd BufNewFile,BufRead * setlocal formatoptions-=c
 
 set encoding=utf-8      " Set internal encoding
 
