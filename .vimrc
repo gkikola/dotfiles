@@ -55,6 +55,28 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=c
 
 set encoding=utf-8      " Set internal encoding
 
+" Set up swap directory
+set swapfile
+if has("win32")
+  let swap_dir = expand("$HOME\vimfiles\swap")
+else
+  let swap_dir = expand("~/.vim/swap")
+endif
+
+if !isdirectory(swap_dir)
+  call mkdir(swap_dir)
+endif
+
+if has("win32")
+  set directory=$HOME\vimfiles\swap//,$TEMP//
+else
+  set directory=~/.vim/swap//,/tmp//
+endif
+
+
+set writebackup         " Protect against crash-during-write
+set nobackup            " Do not keep backup after successful write
+
 " Set GUI options.
 set guioptions-=t       " Disable tearoff menus
 set guioptions-=T       " Disable toolbar
