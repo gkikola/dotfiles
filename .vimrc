@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2021-10-19
+" Updated 2021-10-31
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -76,6 +76,7 @@ endif
 
 set writebackup         " Protect against crash-during-write
 set nobackup            " Do not keep backup after successful write
+set backupcopy=yes      " During backup, copy and overwrite original
 
 " Set GUI options.
 set guioptions-=t       " Disable tearoff menus
