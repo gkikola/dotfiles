@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2021-10-31
+" Updated 2021-11-28
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -64,7 +64,7 @@ else
 endif
 
 if !isdirectory(swap_dir)
-  call mkdir(swap_dir)
+  call mkdir(swap_dir, "p")
 endif
 
 if has("win32")
