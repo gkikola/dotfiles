@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2021-11-28
+" Updated 2021-12-03
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -58,7 +58,7 @@ set encoding=utf-8      " Set internal encoding
 " Set up swap directory
 set swapfile
 if has("win32")
-  let swap_dir = expand("$HOME\vimfiles\swap")
+  let swap_dir = expand("$HOME/vimfiles/swap")
 else
   let swap_dir = expand("~/.vim/swap")
 endif
