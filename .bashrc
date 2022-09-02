@@ -1,7 +1,7 @@
 # Greg Kikola
 # ~/.bashrc
 # 2018-09-19
-# Modified 2022-07-11
+# Modified 2022-09-01
 
 # If not running interactively, don't do anything
 case $- in
@@ -66,6 +66,10 @@ else
   alias dir='dir --group-directories-first'
   alias vdir='vdir --group-directories-first'
 fi
+
+# Default editors
+export SUDO_EDITOR=vim
+export VISUAL=vim
 
 # Colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
