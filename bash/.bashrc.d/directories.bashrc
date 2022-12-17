@@ -1,4 +1,4 @@
 # vim: filetype=sh
 
-alias c='cd ~/Documents/Data/Code/'
+alias c='cd ~/Documents/Code/'
 alias dl='cd ~/Downloads/'
