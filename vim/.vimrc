@@ -14,6 +14,13 @@ silent! while 0
   set nocompatible
 silent! endwhile
 
+" Set home directory (normally ~/.vim)
+if has('win32') || has('win64')
+  let vim_home_dir = expand("$HOME/vimfiles")
+else
+  let vim_home_dir = expand("~/.vim")
+endif
+
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
@@ -46,21 +53,17 @@ set encoding=utf-8      " Set internal encoding
 
 " Set up swap directory
 set swapfile
-if has("win32")
-  let swap_dir = expand("$HOME/vimfiles/swap")
+let swap_dir = expand(vim_home_dir . "/swap")
+if has('win32') || has('win64')
+  let temp_dir = "$TEMP"
 else
-  let swap_dir = expand("~/.vim/swap")
+  let temp_dir = "/tmp"
 endif
-
 if !isdirectory(swap_dir)
   call mkdir(swap_dir, "p")
 endif
 
-if has("win32")
-  set directory=$HOME\vimfiles\swap//,$TEMP//
-else
-  set directory=~/.vim/swap//,/tmp//
-endif
+let &directory = swap_dir . "//," . temp_dir . "//"
 
 
 set writebackup         " Protect against crash-during-write
