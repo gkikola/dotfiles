@@ -27,6 +27,8 @@ set backspace=indent,eol,start
 " Use jk instead of <ESC> to exit insert mode.
 inoremap jk <ESC>
 
+let mapleader = "\<space>"
+
 set history=200         " Keep 200 lines of command line history
 set ruler               " Show the cursor position all the time
 set showcmd             " Display incomplete commands
@@ -104,3 +106,37 @@ autocmd BufWinEnter * match Error /\s\+$/
 autocmd InsertEnter * match Error /\s\+\%#\@<!$/
 autocmd InsertLeave * match Error /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Plugins with vim-plug
+if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
+  call plug#begin()
+
+  " yegappan/lsp LSP plugin
+  if !has("nvim") && !has("win32") && !has("win64")
+    Plug 'yegappan/lsp'
+
+    function s:InitYegappanLSP()
+      let l:lspOpts = {}
+      let l:lspServers = [#{
+            \ name: 'typescriptlang',
+            \ filetype: ['javascript', 'typescript'],
+            \ path: expand(systemlist('which npx')[0]),
+            \ args: ['typescript-language-server', '--stdio'],
+            \ }]
+
+      call LspOptionsSet(l:lspOpts)
+      call LspAddServer(l:lspServers)
+
+      nnoremap <leader>i :LspHover<CR>
+      nnoremap <leader>d :LspGotoDefinition<CR>
+      nnoremap <leader>p :LspPeekDefinition<CR>
+      nnoremap <leader>r :LspRename<CR>
+      nnoremap <leader>R :LspPeekReferences<CR>
+      nnoremap <leader>o :LspDocumentSymbol<CR>
+    endfunction
+
+    autocmd User LspSetup call s:InitYegappanLSP()
+  endif
+
+  call plug#end()
+endif
