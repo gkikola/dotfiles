@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-06-10
+" Updated 2025-06-15
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -57,7 +57,7 @@ set encoding=utf-8      " Set internal encoding
 set swapfile
 let swap_dir = expand(vim_home_dir . "/swap")
 if has('win32') || has('win64')
-  let temp_dir = "$TEMP"
+  let temp_dir = expand("$TEMP")
 else
   let temp_dir = "/tmp"
 endif
