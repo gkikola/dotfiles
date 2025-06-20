@@ -14,3 +14,12 @@ else
   export SUDO_EDITOR="$(command -v vi)"
   export VISUAL="$(command -v vi)"
 fi
+
+# Load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Load nvm completions if the current shell is Bash
+if [ -n "$BASH_VERSION" ]; then
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi
