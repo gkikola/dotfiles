@@ -36,6 +36,8 @@ set laststatus=2        " Always show window statusline
 set nowrap              " Disable text-wrapping
 set wildmenu            " Display completion matches in a status line
 set incsearch           " Enable incremental search
+set nohlsearch          " Disable search highlight
+set scrolloff=0         " Disable context lines when scrolling
 
 set hidden              " Hide abandoned buffers
 
