@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-06-15
+" Updated 2025-06-20
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -117,12 +117,24 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
 
     function s:InitYegappanLSP()
       let l:lspOpts = {}
-      let l:lspServers = [#{
-            \ name: 'typescriptlang',
-            \ filetype: ['javascript', 'typescript'],
-            \ path: expand(systemlist('which npx')[0]),
-            \ args: ['typescript-language-server', '--stdio'],
-            \ }]
+      let l:lspServers = []
+
+      let l:npxPath = systemlist('which npx')
+
+      if len(l:npxPath) > 0
+        let l:npxPath = l:npxPath[0]
+      else
+        let l:npxPath = ''
+      endif
+
+      if filereadable(expand(l:npxPath))
+        let l:lspServers += [#{
+              \ name: 'typescriptlang',
+              \ filetype: ['javascript', 'typescript'],
+              \ path: l:npxPath,
+              \ args: ['typescript-language-server', '--stdio'],
+              \ }]
+      endif
 
       call LspOptionsSet(l:lspOpts)
       call LspAddServer(l:lspServers)
