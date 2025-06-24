@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-06-20
+" Updated 2025-06-24
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -113,6 +113,20 @@ autocmd BufWinLeave * call clearmatches()
 if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
   call plug#begin()
 
+  function s:GetNpxPath()
+    if has("win32") || has("win64")
+      return ''
+    endif
+
+    let l:path = systemlist('which npx')
+
+    if len(l:path) > 0
+      return l:path[0]
+    endif
+
+    return ''
+  endfunction
+
   " yegappan/lsp LSP plugin
   if !has("nvim") && !has("win32") && !has("win64")
     Plug 'yegappan/lsp'
@@ -121,13 +135,7 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
       let l:lspOpts = {}
       let l:lspServers = []
 
-      let l:npxPath = systemlist('which npx')
-
-      if len(l:npxPath) > 0
-        let l:npxPath = l:npxPath[0]
-      else
-        let l:npxPath = ''
-      endif
+      let l:npxPath = s:GetNpxPath()
 
       if filereadable(expand(l:npxPath))
         let l:lspServers += [#{
@@ -151,6 +159,8 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
 
     autocmd User LspSetup call s:InitYegappanLSP()
   endif
+
+
 
   call plug#end()
 endif
