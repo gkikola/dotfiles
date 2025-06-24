@@ -2,6 +2,7 @@
 
 # Run gvim without GUI instead of Vim in order to have clipboard support
 alias vim='gvim -v'
+alias vimdiff='gvimdiff -v'
 
 # Set ls aliases
 alias ll='ls -hl' # Long list format with human-readable sizes
