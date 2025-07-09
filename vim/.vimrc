@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-06-24
+" Updated 2025-07-09
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -48,6 +48,15 @@ set expandtab           " Indent with spaces instead of tab characters
 set shiftwidth=2        " Set indent level for autoindent
 set softtabstop=2       " Set tab stop
 set textwidth=78        " Set length of formatted lines
+
+if has('mouse')
+  " Fix mouse behavior when running inside tmux
+  if &term[0:3] ==? "tmux"
+    set ttymouse=xterm2
+  endif
+
+  set mouse=a
+endif
 
 " Disable automatic line wrapping
 autocmd BufNewFile,BufRead * setlocal formatoptions-=t
