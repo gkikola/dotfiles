@@ -133,6 +133,9 @@ endif
 if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
   call plug#begin()
 
+  " Registering vim-plug as a plugin will allow docs to be installed
+  Plug 'junegunn/vim-plug'
+
   function s:GetNpxPath()
     if has("win32") || has("win64")
       return ''
