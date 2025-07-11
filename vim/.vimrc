@@ -44,6 +44,9 @@ set scrolloff=0         " Disable context lines when scrolling
 " higlighting.
 set viminfo='20,<50,s8,h
 
+" Always use Unix line endings and file separators in session files.
+set sessionoptions+=unix,slash
+
 set hidden              " Hide abandoned buffers
 
 set ttimeout            " Time out for key codes
