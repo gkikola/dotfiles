@@ -15,7 +15,7 @@ silent! while 0
 silent! endwhile
 
 " Set home directory (normally ~/.vim)
-if has('win32') || has('win64')
+if has("win32") || has("win64")
   let vim_home_dir = expand("$HOME/vimfiles")
 else
   let vim_home_dir = expand("~/.vim")
@@ -54,7 +54,7 @@ set shiftwidth=2        " Set indent level for autoindent
 set softtabstop=2       " Set tab stop
 set textwidth=78        " Set length of formatted lines
 
-if has('mouse')
+if has("mouse")
   " Fix mouse behavior when running inside tmux
   if &term[0:3] ==? "tmux"
     set ttymouse=xterm2
@@ -72,7 +72,7 @@ set encoding=utf-8      " Set internal encoding
 " Set up swap directory
 set swapfile
 let swap_dir = expand(vim_home_dir . "/swap")
-if has('win32') || has('win64')
+if has("win32") || has("win64")
   let temp_dir = expand("$TEMP")
 else
   let temp_dir = "/tmp"
@@ -138,7 +138,7 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
       return ''
     endif
 
-    let l:path = systemlist('which npx')
+    let l:path = systemlist("which npx")
 
     if len(l:path) > 0
       return l:path[0]
@@ -159,10 +159,10 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
 
       if filereadable(expand(l:npxPath))
         let l:lspServers += [#{
-              \ name: 'typescriptlang',
-              \ filetype: ['javascript', 'typescript'],
+              \ name: "typescriptlang",
+              \ filetype: ["javascript", "typescript"],
               \ path: l:npxPath,
-              \ args: ['typescript-language-server', '--stdio'],
+              \ args: ["typescript-language-server", "--stdio"],
               \ }]
       endif
 
