@@ -29,6 +29,9 @@ inoremap jk <ESC>
 
 let mapleader = "\<space>"
 
+" Set mapping to list buffers and begin a command to switch to a buffer.
+nnoremap <leader>b :ls<CR>:b<Space>
+
 set history=200         " Keep 200 lines of command line history
 set ruler               " Show the cursor position all the time
 set showcmd             " Display incomplete commands
