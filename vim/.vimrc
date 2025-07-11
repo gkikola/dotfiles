@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-07-09
+" Updated 2025-07-11
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -117,6 +117,12 @@ autocmd BufWinEnter * match Error /\s\+$/
 autocmd InsertEnter * match Error /\s\+\%#\@<!$/
 autocmd InsertLeave * match Error /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" View man pages in Vim
+if !has("win32") && !has("win64")
+  runtime! ftplugin/man.vim
+  set keywordprg=:Man
+endif
 
 " Plugins with vim-plug
 if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
