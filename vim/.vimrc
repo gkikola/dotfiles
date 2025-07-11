@@ -39,6 +39,11 @@ set incsearch           " Enable incremental search
 set nohlsearch          " Disable search highlight
 set scrolloff=0         " Disable context lines when scrolling
 
+" Set options for viminfo file: Limit saved registers to 50 lines and 8 kB
+" each, only save marks from 20 different files, and do not restore search
+" higlighting.
+set viminfo='20,<50,s8,h
+
 set hidden              " Hide abandoned buffers
 
 set ttimeout            " Time out for key codes
