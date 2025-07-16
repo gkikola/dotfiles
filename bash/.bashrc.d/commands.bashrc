@@ -1,8 +1,11 @@
 # vim: filetype=sh
 
 # Run gvim without GUI instead of Vim in order to have clipboard support
-alias vim='gvim -v'
-alias vimdiff='gvimdiff -v'
+if command -v gvim >/dev/null 2>&1; then
+  alias vim='gvim -v'
+  alias vimdiff='gvimdiff -v'
+  alias view='gview -v'
+fi
 
 # Set ls aliases
 alias ll='ls -hl' # Long list format with human-readable sizes
