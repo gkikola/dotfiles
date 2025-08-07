@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-07-11
+" Updated 2025-08-07
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -70,8 +70,8 @@ if has("mouse")
 endif
 
 " Disable automatic line wrapping
+setlocal formatoptions-=t
 autocmd BufNewFile,BufRead * setlocal formatoptions-=t
-autocmd BufNewFile,BufRead * setlocal formatoptions-=c
 
 set encoding=utf-8      " Set internal encoding
 
