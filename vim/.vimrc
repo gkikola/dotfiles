@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-08-07
+" Updated 2025-09-21
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -129,11 +129,71 @@ autocmd InsertEnter * match Error /\s\+\%#\@<!$/
 autocmd InsertLeave * match Error /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+
+
 " View man pages in Vim
 if !has("win32") && !has("win64")
   runtime! ftplugin/man.vim
   set keywordprg=:Man
 endif
+
+" Run formatprg with error handling
+function s:Format()
+  if len(&formatprg) == 0
+    return 1 " Do not perform formatting if no formatprg is set
+  endif
+
+  " If more than one line is being formatted, use a downward motion
+  if v:count == 1
+    let motion = "h"
+  else
+    let motion = (v:count - 1) . "j"
+  endif
+
+  execute "normal! " .. v:lnum .. "G!" .. motion .. &formatprg .. "\<CR>"
+  if v:shell_error != 0
+    " Undo the replacement since formatprg failed
+    silent undo
+    redraw
+    echomsg "formatprg '" . &formatprg . "' exited with status " . v:shell_error . "."
+  endif
+
+  " The redraw is important to avoid a 'Press Enter' message
+  redraw
+
+  " Need to return 0 to prevent internal formatter from being used
+  return 0
+endfunction
+set formatexpr=s:Format()
+
+" Get the path to the npx executable if it exists
+function s:GetNpxPath()
+  if has("win32") || has("win64")
+    return ""
+  endif
+
+  let l:path = systemlist("which npx")
+
+  if len(l:path) > 0
+    let l:expanded = expand(l:path[0])
+    if filereadable(l:expanded)
+      return l:expanded
+    endif
+  endif
+
+  return ""
+endfunction
+
+" Set formatter
+function s:setJSFormatter()
+  let l:npxPath = s:GetNpxPath()
+  if strlen(l:npxPath) > 0
+    let &formatprg = l:npxPath . " prettier --stdin-filepath " . expand("%:t")
+  endif
+endfunction
+
+autocmd FileType javascript call s:setJSFormatter()
+
 
 " Plugins with vim-plug
 if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
@@ -141,20 +201,6 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
 
   " Registering vim-plug as a plugin will allow docs to be installed
   Plug 'junegunn/vim-plug'
-
-  function s:GetNpxPath()
-    if has("win32") || has("win64")
-      return ''
-    endif
-
-    let l:path = systemlist("which npx")
-
-    if len(l:path) > 0
-      return l:path[0]
-    endif
-
-    return ''
-  endfunction
 
   " yegappan/lsp LSP plugin
   if !has("nvim") && !has("win32") && !has("win64")
@@ -166,7 +212,7 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
 
       let l:npxPath = s:GetNpxPath()
 
-      if filereadable(expand(l:npxPath))
+      if strlen(l:npxPath) > 0
         let l:lspServers += [#{
               \ name: "typescriptlang",
               \ filetype: ["javascript", "typescript"],
