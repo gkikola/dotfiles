@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-09-21
+" Updated 2025-09-23
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -188,7 +188,7 @@ endfunction
 function s:setJSFormatter()
   let l:npxPath = s:GetNpxPath()
   if strlen(l:npxPath) > 0
-    let &formatprg = l:npxPath . " prettier --stdin-filepath " . expand("%:t")
+    let &l:formatprg = l:npxPath . " prettier --stdin-filepath " . expand("%:t")
   endif
 endfunction
 
