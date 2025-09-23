@@ -139,8 +139,10 @@ endif
 
 " Run formatprg with error handling
 function s:Format()
-  if len(&formatprg) == 0
-    return 1 " Do not perform formatting if no formatprg is set
+  " Do not use an external program if formatprg is not set or during automatic
+  " formatting in insert/replace mode
+  if len(&formatprg) == 0 || mode() == "i" || mode() == "R"
+    return 1
   endif
 
   " If more than one line is being formatted, use a downward motion
