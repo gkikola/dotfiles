@@ -1,7 +1,7 @@
 # Greg Kikola
 # ~/.gitconfig
 # Created 2018-09-09
-# Updated 2025-06-24
+# Updated 2025-10-05
 
 [user]
 	name = Greg Kikola
@@ -10,5 +10,7 @@
 	editor = vim
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true
 [merge]
 	tool = vimdiff
