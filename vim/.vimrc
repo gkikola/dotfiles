@@ -177,6 +177,16 @@ function s:hasNpx()
   return s:npx_exists
 endfunction
 
+" Determine whether an npm package is installed globally
+function s:hasNpmPackage(package_name)
+  if !s:hasNpx()
+    return 0
+  endif
+
+  call system("npm ls --global --depth=0 " . a:package_name)
+  return v:shell_error == 0
+endfunction
+
 " Set formatter
 function s:setWebFormatter()
   if s:hasNpx()
@@ -205,7 +215,7 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
       let l:lspOpts = {}
       let l:lspServers = []
 
-      if s:hasNpx()
+      if s:hasNpx() && s:hasNpmPackage("typescript-language-server")
         let l:lspServers += [#{
               \ name: "typescriptlang",
               \ filetype: ["javascript", "typescript"],
