@@ -130,7 +130,6 @@ autocmd InsertLeave * match Error /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 
-
 " View man pages in Vim
 if !has("win32") && !has("win64")
   runtime! ftplugin/man.vim
@@ -168,29 +167,20 @@ function s:Format()
 endfunction
 set formatexpr=s:Format()
 
-" Get the path to the npx executable if it exists
-function s:GetNpxPath()
-  if has("win32") || has("win64")
-    return ""
+" Determine whether npx is installed and available in PATH
+function s:hasNpx()
+  if exists("s:npx_exists")
+    return s:npx_exists
   endif
 
-  let l:path = systemlist("which npx")
-
-  if len(l:path) > 0
-    let l:expanded = expand(l:path[0])
-    if filereadable(l:expanded)
-      return l:expanded
-    endif
-  endif
-
-  return ""
+  let s:npx_exists = len(exepath("npx")) > 0
+  return s:npx_exists
 endfunction
 
 " Set formatter
 function s:setWebFormatter()
-  let l:npxPath = s:GetNpxPath()
-  if strlen(l:npxPath) > 0
-    let &l:formatprg = l:npxPath . " prettier --stdin-filepath " . expand("%:t")
+  if s:hasNpx()
+    let &l:formatprg = "npx prettier --stdin-filepath " . expand("%:t")
   endif
 endfunction
 
@@ -215,13 +205,11 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
       let l:lspOpts = {}
       let l:lspServers = []
 
-      let l:npxPath = s:GetNpxPath()
-
-      if strlen(l:npxPath) > 0
+      if s:hasNpx()
         let l:lspServers += [#{
               \ name: "typescriptlang",
               \ filetype: ["javascript", "typescript"],
-              \ path: l:npxPath,
+              \ path: exepath("npx"),
               \ args: ["typescript-language-server", "--stdio"],
               \ }]
       endif
@@ -239,7 +227,6 @@ if filereadable(expand(vim_home_dir . "/autoload/plug.vim"))
 
     autocmd User LspSetup call s:InitYegappanLSP()
   endif
-
 
 
   call plug#end()
