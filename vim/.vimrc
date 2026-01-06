@@ -1,7 +1,7 @@
 " Greg Kikola
 " ~/.vimrc
 " Created 2021-06-04
-" Updated 2025-09-23
+" Updated 2026-01-06
 
 " Use settings for Vim, rather than Vi.
 if &compatible
@@ -187,14 +187,17 @@ function s:GetNpxPath()
 endfunction
 
 " Set formatter
-function s:setJSFormatter()
+function s:setWebFormatter()
   let l:npxPath = s:GetNpxPath()
   if strlen(l:npxPath) > 0
     let &l:formatprg = l:npxPath . " prettier --stdin-filepath " . expand("%:t")
   endif
 endfunction
 
-autocmd FileType javascript call s:setJSFormatter()
+autocmd FileType css call s:setWebFormatter()
+autocmd FileType html call s:setWebFormatter()
+autocmd FileType javascript call s:setWebFormatter()
+autocmd FileType json call s:setWebFormatter()
 
 
 " Plugins with vim-plug
